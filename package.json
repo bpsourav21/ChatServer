@@ -1,0 +1,19 @@
+{
+  "name": "ChatServer",
+  "version": "0.0.1",
+  "description": "A simple chat app server using socket.io",
+  "main": "index.js",
+  "author": "Mahadi Hasan Sourav",
+  "emmail": "bpsourav21@gmail.com",
+  "private": true,
+  "license": "Null",
+  "dependencies": {
+    "express": "4.14.0",
+    "mongojs": "^2.4.0",
+    "nodemon": "^1.11.0",
+    "socket.io": "^2.0.4"
+  },
+  "scripts": {
+    "start": "nodemon index.js"
+  }
+}
