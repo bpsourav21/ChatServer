@@ -2,14 +2,24 @@ var express = require('express');
 var http = require('http')
 var socketio = require('socket.io');
 var mongojs = require('mongojs');
-
+var path = require('path');
 var ObjectID = mongojs.ObjectID;
 var db = mongojs('mongodb://127.0.0.1:27017/chatapp')
 //var db = mongojs(process.env.MONGO_URL || 'mongodb://localhost:27017/local'); 
 var app = express();
 var server = http.Server(app);
 var websocket = socketio(server);
-server.listen(3000, () => console.log('listening on *:3000'));
+// server.listen(3000, () => console.log('listening on *:3000'));
+
+// Define the port to run on
+app.set('port', 3002);
+
+app.use(express.static(path.join(__dirname, 'public')));
+
+server.listen(app.get('port'), function () {
+  var port = server.address().port;
+  console.log('Magic happens on port ' + port);
+});
 
 // Mapping objects to easily map sockets and users.
 var clients = {};
